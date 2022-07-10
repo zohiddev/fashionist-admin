@@ -13,4 +13,4 @@ RUN yarn install
 EXPOSE 80
 ENV HOST 0.0.0.0
 CMD [ "yarn","run", "build" ] 
-CMD [ "yarn","run", "serve" ] 
+CMD [ "yarn","run", "start" ] 
