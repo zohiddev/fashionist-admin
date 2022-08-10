@@ -1,18 +1,13 @@
-import {  createContext, React } from 'react'
+import { createContext, React } from 'react'
 import { useState } from 'react'
-
-
 
 export const UserContext = createContext()
 
-function UserProvider({children}){
+function UserProvider({ children }) {
+	const [user, setUser] = useState(localStorage.getItem('user') || false)
 
-	const [user, setUser] = useState(false)
-
-
-
-	return(
-		<UserContext.Provider value={{user, setUser}}>
+	return (
+		<UserContext.Provider value={{ user, setUser }}>
 			{children}
 		</UserContext.Provider>
 	)

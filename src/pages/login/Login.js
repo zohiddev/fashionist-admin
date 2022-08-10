@@ -1,19 +1,19 @@
-import React, { useContext, useState } from "react"
-import { api } from "../../http"
+import React, { useContext, useState } from 'react'
+import { api } from '../../http'
 // import { useDispatch } from "react-redux"
 // import { setUserAC } from "../../store/reducers/userReducer"
-import { useHistory } from "react-router-dom"
+import { useHistory } from 'react-router-dom'
 import { PageHeader, Select, Row, Card, Form, Button, Input } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { UserContext } from './../../context/userContext'
 
-const {Option} = Select
+const { Option } = Select
 
 function Login() {
-	const [username, setUsername] = useState("")
-	const [password, setPassword] = useState("")
+	const [username, setUsername] = useState('')
+	const [password, setPassword] = useState('')
 	const [verify, setVerify] = useState(false)
-	const {user, setUser} = useContext(UserContext)
+	const { user, setUser } = useContext(UserContext)
 	// const dispatch = useDispatch()
 	const history = useHistory()
 
@@ -24,22 +24,25 @@ function Login() {
 				let res
 				res = await api.login({ username, password })
 				if (res.data.isOk) {
-					let { accessToken, refreshToken, user_id, username} = res.data
-					localStorage.setItem("accessToken", accessToken)
-					localStorage.setItem("refreshToken", refreshToken)
+					let { accessToken, refreshToken, user_id, username } =
+						res.data
+					localStorage.setItem('accessToken', accessToken)
+					localStorage.setItem('refreshToken', refreshToken)
+					localStorage.setItem('user', true)
+
 					// localStorage.setItem("user", JSON.stringify({user_id, username}))
 					setUser(true)
-					history.push("/")
+					history.push('/')
 				} else {
 					alert(res.data.message)
-					setUsername("")
-					setPassword("")
+					setUsername('')
+					setPassword('')
 					setVerify(true)
 				}
 			} catch (error) {
 				console.error(error)
 				// setAppState({ ...appState, loading: false });
-				alert(error.response?.data?.error || "Error")
+				alert(error.response?.data?.error || 'Error')
 			}
 		} else {
 			setVerify(true)
@@ -49,35 +52,38 @@ function Login() {
 	return (
 		<>
 			<PageHeader
-				className="header header-full"
-				style={{width: '100vw'}}
+				className='header header-full'
+				style={{ width: '100vw' }}
 				extra={
-					<Select
-						defaultValue="Uzbek"
-						style={{ width: 120}}
-					>
-						<Option value="uz">Uzbek</Option>
-						<Option value="ru">Rus</Option>
-				  </Select>
+					<Select defaultValue='Uzbek' style={{ width: 120 }}>
+						<Option value='uz'>Uzbek</Option>
+						<Option value='ru'>Rus</Option>
+					</Select>
 				}
 			/>
 
-			<Row style={{justifyContent: 'center', alignItems: 'center', height: '90vh'}}>
+			<Row
+				style={{
+					justifyContent: 'center',
+					alignItems: 'center',
+					height: '90vh',
+				}}
+			>
 				<Card
-					title="Kirish"
+					title='Kirish'
 					style={{
 						width: 300,
 					}}
 				>
-				 <Form
-						name="normal_login"
-						className="login-form"
+					<Form
+						name='normal_login'
+						className='login-form'
 						initialValues={{
 							remember: true,
 						}}
 					>
 						<Form.Item
-							name="Login"
+							name='Login'
 							rules={[
 								{
 									required: true,
@@ -88,12 +94,14 @@ function Login() {
 							<Input
 								value={username}
 								onChange={(e) => setUsername(e.target.value)}
-								prefix={<UserOutlined className="site-form-item-icon" />}
-								placeholder="Login"
+								prefix={
+									<UserOutlined className='site-form-item-icon' />
+								}
+								placeholder='Login'
 							/>
 						</Form.Item>
 						<Form.Item
-							name="Parol"
+							name='Parol'
 							rules={[
 								{
 									required: true,
@@ -102,19 +110,21 @@ function Login() {
 							]}
 						>
 							<Input
-								prefix={<LockOutlined className="site-form-item-icon" />}
-								type="password"
-								placeholder="Parol"
+								prefix={
+									<LockOutlined className='site-form-item-icon' />
+								}
+								type='password'
+								placeholder='Parol'
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
 							/>
 						</Form.Item>
 						<Form.Item>
 							<Button
-								style={{width: '100%'}}
-								type="primary"
-								htmlType="submit"
-								className="login-form-button"
+								style={{ width: '100%' }}
+								type='primary'
+								htmlType='submit'
+								className='login-form-button'
 								onClick={handleSubmit}
 							>
 								Kirish

@@ -1,6 +1,6 @@
 const uz = {
 	viewOrder: "Buyurtmani ko'rish",
-	orders: "Buyurtmalar",
+	orders: 'Buyurtmalar',
 	cancel: 'Bekor qilish',
 	orderId: 'Buyurtma id',
 	products: 'Mahsulotlar',
@@ -54,16 +54,13 @@ const uz = {
 	bannerName: 'Banner nomi',
 	bannerPosition: 'Banner pozitsiyasi',
 	viewBanner: "Bannerni ko'rish",
-	deleteBanner: "Bannerni o`chirmoqchimisz",
-	save: 'Saqlash'
-
-
-
+	deleteBanner: 'Bannerni o`chirmoqchimisz',
+	save: 'Saqlash',
 }
 
 const ru = {
 	viewOrder: 'Просмотреть заказ',
-	orders: "Заказы",
+	orders: 'Заказы',
 	cancel: 'Отмена',
 	orderId: 'Номер заказа',
 	products: 'Товары',
@@ -81,8 +78,8 @@ const ru = {
 	paymentMethod: 'Тип платежа',
 	page: 'Страница',
 	enter: 'войти',
-	content_uz: "информация на узбекском",
-	content_ru: "информация на русском",
+	content_uz: 'информация на узбекском',
+	content_ru: 'информация на русском',
 	url: 'URL-адрес',
 	title_uz: 'название на узбекском языке',
 	title_ru: 'название на русском языке',
@@ -108,7 +105,7 @@ const ru = {
 	addBrand: 'Добавить бренд',
 	deleteBrand: 'Вы хотите удалить бренд',
 	yes: 'Да',
-	no: "Нет",
+	no: 'Нет',
 	brandNameUz: 'Введите название бренда на узбекском языке',
 	brandNameRu: 'Введите название бренда на русском языке',
 	brandName: 'Имя бренда',
@@ -116,12 +113,9 @@ const ru = {
 	img: 'Картина',
 	bannerName: 'Название баннера',
 	bannerPosition: 'Позиция баннера',
-	viewBanner: "Посмотреть баннер",
-	deleteBanner: "Вы хотите удалить баннер?",
-	save: 'Сохранять'
-
-
-
+	viewBanner: 'Посмотреть баннер',
+	deleteBanner: 'Вы хотите удалить баннер?',
+	save: 'Сохранять',
 }
 
-export const languages = {uz, ru}
+export const languages = { uz, ru }

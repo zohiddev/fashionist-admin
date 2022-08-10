@@ -3,11 +3,7 @@
 		"browser": true,
 		"es2021": true
 	},
-	"extends": [
-		"react-app",
-		"react-app/jest",
-		"plugin:react/recommended"
-	],
+	"extends": ["react-app", "react-app/jest", "plugin:react/recommended"],
 	"parserOptions": {
 		"ecmaFeatures": {
 			"jsx": true
@@ -15,12 +11,16 @@
 		"ecmaVersion": 12,
 		"sourceType": "module"
 	},
-	"plugins": [
-		"prettier",
-		"react"
-	],
+	"plugins": ["prettier", "react"],
 	"rules": {
-		"indent": ["error", "tab", { "SwitchCase": 1, "ignoredNodes": ["ConditionalExpression", "TemplateLiteral"]}],
+		"indent": [
+			"error",
+			"tab",
+			{
+				"SwitchCase": 1,
+				"ignoredNodes": ["ConditionalExpression", "TemplateLiteral"]
+			}
+		],
 		"no-tabs": 0,
 		"semi": [1, "never"],
 		"react/display-name": 0,
