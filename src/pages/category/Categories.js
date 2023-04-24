@@ -34,7 +34,12 @@ import {
     UploadOutlined,
     ExclamationCircleOutlined,
 } from "@ant-design/icons";
-import { postData, slugify, getParentParentId } from "../../utils/helpers";
+import {
+    postData,
+    slugify,
+    getParentParentId,
+    imageUpload,
+} from "../../utils/helpers";
 import useLanguage from "./../../hooks/useLanguage";
 import { useContext } from "react";
 import { LanguageContext } from "./../../context/languageContext";
@@ -88,13 +93,13 @@ const Categories = () => {
 
     async function handleAddCategoryBtn(e) {
         e.preventDefault();
-        if (
-            data.name_uz !== "" &&
-            data.name_ru !== "" &&
-            data.parent_id !== ""
-        ) {
+        if (data.name_uz !== "" && data.name_ru !== "") {
+            const a = {
+                ...postData(data, ["isNew"]),
+                parent_id: data.parent_id !== "" ? data.parent_id : 0,
+            };
             let { success } = await addCategoriesRequest.request({
-                data: postData(data, ["isNew"]),
+                data: a,
             });
             if (success) {
                 categoryList.request();
@@ -124,13 +129,11 @@ const Categories = () => {
 
     async function uploadImage(file) {
         let { onSuccess } = file;
-        const data = new FormData();
-        data.append("image", file.file);
-        const { success, response } = await addImageRequest.request({ data });
+        const { success, response } = await imageUpload(file.file);
         if (success) {
-            if (response?.isOk) {
+            if (response?.url) {
                 onSuccess(response);
-                setData({ ...data, catImage: response?.image_name });
+                setData({ ...data, catImage: response?.url });
             }
         }
     }
